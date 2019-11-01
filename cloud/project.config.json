@@ -5,7 +5,7 @@
 	"description": "cloud-demo",
 	"appid": "wxaa3326228783fccb",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,

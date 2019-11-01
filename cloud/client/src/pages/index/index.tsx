@@ -18,9 +18,21 @@ export default class Index extends Component {
     navigationBarTitleText: '广场'
   }
 
+  state = {
+    list: []
+  }
+
   componentWillMount () { }
 
-  componentDidMount () { }
+  componentDidMount () { 
+    const db = Taro.cloud.database()
+    db.collection('list2').get().then(res => {
+      console.log(res.data)
+      this.setState({
+        list: res.data
+      })
+    })
+  }
 
   componentWillUnmount () { }
 
@@ -29,11 +41,24 @@ export default class Index extends Component {
   componentDidHide () { }
 
   render () {
+    const { list } = this.state;
+    // <Card src="https://api.uomg.com/api/rand.img1?sort=美女&format=images" />
     return (
-      <View className='index'>
-        <Card src="https://api.uomg.com/api/rand.img1?sort=美女&format=images" />
-        <Card src="https://api.uomg.com/api/rand.img1" />
-        <Card src="https://api.uomg.com/api/rand.img2" />
+      <View className='g-container'>
+        <View className='g-queue'>
+          {
+            list.reverse().map((item : any) => (
+              <Card key={item._id} src={item.img_small} />
+            ))
+          }
+        </View>
+        <View className='g-queue'>
+          {
+            list.reverse().map((item : any) => (
+              <Card key={item._id} src={item.img_small} />
+            ))
+          }
+        </View>
       </View>
     )
   }
