@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cos-nodejs-sdk-v5": "^2.5.14"
+    "cheerio": "^1.0.0-rc.3",
+    "cos-nodejs-sdk-v5": "^2.5.14",
+    "download": "^7.1.0",
+    "request-promise": "^4.2.5"
   }
 }

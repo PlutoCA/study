@@ -31,32 +31,33 @@ var options = {
     // }
 };
 
-request.get(options, function(err, response, body){
-    // console.info(JSON.parse(response.body).data);
-    const imgs = JSON.parse(response.body).data
-    imgs.forEach((item) => {
-        const writeStream = fs.createWriteStream(`./image2/${item.id}.jpg`);
-        const readStream = request(item.thumb_url)
-        readStream.pipe(writeStream);
-        readStream.on('end', function() {
-            console.log('文件下载成功');
-        });
-        readStream.on('error', function() {
-            console.log("错误信息:" + err)
-        })
-        writeStream.on("finish", function() {
-            cos.putObject({
-                Bucket: config.Bucket, // Bucket 格式：test-1250000000
-                Region: config.Region,   /* 必须 */
-                Key: `./image/${item.id}.jpg`,              /* 必须 */
-                StorageClass: 'STANDARD',
-                Body: fs.createReadStream(`./image2/${item.id}.jpg`), // 上传文件对象
-            }, function(err, data) {
-                console.log(err || "上传成功")
-            });
-            writeStream.end();
-        });
-    });
-});
+
+// request.get(options, function(err, response, body){
+//     // console.info(JSON.parse(response.body).data);
+//     const imgs = JSON.parse(response.body).data
+//     imgs.forEach((item) => {
+//         const writeStream = fs.createWriteStream(`./image2/${item.id}.jpg`);
+//         const readStream = request(item.thumb_url)
+//         readStream.pipe(writeStream);
+//         readStream.on('end', function() {
+//             console.log('文件下载成功');
+//         });
+//         readStream.on('error', function() {
+//             console.log("错误信息:" + err)
+//         })
+//         writeStream.on("finish", function() {
+//             cos.putObject({
+//                 Bucket: config.Bucket, // Bucket 格式：test-1250000000
+//                 Region: config.Region,   /* 必须 */
+//                 Key: `./image/${item.id}.jpg`,              /* 必须 */
+//                 StorageClass: 'STANDARD',
+//                 Body: fs.createReadStream(`./image2/${item.id}.jpg`), // 上传文件对象
+//             }, function(err, data) {
+//                 console.log(err || "上传成功")
+//             });
+//             writeStream.end();
+//         });
+//     });
+// });
 
 

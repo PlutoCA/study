@@ -60,6 +60,16 @@ typings/
 # next.js build output
 .next
 
+*/dist/
+deploy_versions/
+*/.temp/
+.rn_temp/
+*/node_modules/
+.DS_Store
+
+
 cos/image
 cos/image2
 cos/config.js
+
+*/wallpaper
