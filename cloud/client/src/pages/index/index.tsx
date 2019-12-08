@@ -24,14 +24,19 @@ export default class Index extends Component {
 
   componentWillMount () { }
 
-  componentDidMount () { 
+  componentDidMount = async () => { 
     const db = Taro.cloud.database()
-    db.collection('list2').get().then(res => {
-      console.log(res.data)
-      this.setState({
-        list: res.data
-      })
+    // const countResult = await db.collection('todos').count()
+    db.collection('list').count().then(res => {
+
+      console.log(res)
     })
+    // db.collection('list').get().then(res => {
+    //   console.log(res.data)
+    //   this.setState({
+    //     list: res.data
+    //   })
+    // })
   }
 
   componentWillUnmount () { }

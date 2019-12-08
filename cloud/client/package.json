@@ -25,6 +25,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@tarojs/async-await": "^1.3.26",
     "@tarojs/components": "1.3.15",
     "@tarojs/router": "1.3.15",
     "@tarojs/taro": "1.3.15",
@@ -33,8 +34,8 @@
     "@tarojs/taro-swan": "1.3.15",
     "@tarojs/taro-tt": "1.3.15",
     "@tarojs/taro-weapp": "1.3.15",
-    "nervjs": "^1.4.0",
-    "nerv-devtools": "^1.4.0"
+    "nerv-devtools": "^1.4.0",
+    "nervjs": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^16.4.6",
